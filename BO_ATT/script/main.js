@@ -1,4 +1,5 @@
-require(['EmersonTest/scripts/Main'],function(myWidget){
+require(["DS/DataDragAndDrop/DataDragAndDrop","DS/PlatformAPI/PlatformAPI","DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices"], function(DataDragAndDrop,PlatformAPI,WAFData,BaseUrl){
+	
     var myWidget = {
             
         onLoad: function () {
@@ -8,15 +9,9 @@ require(['EmersonTest/scripts/Main'],function(myWidget){
         updateWidget: function () {
             dragAndDropComp.showDroppable();
         }, 
-        getDroppedObjectInfo: function (data) {
-            if (data.length > 1) {
-                alert("Please drop only one object");
-                return;
-            } else {
-                myWidget.getCSRFToken(data);
-            }
-        }, 
-}
-    widget.myWidget = myWidget;
-    return myWidget;
+        
+    }
+widget.addEvent('onLoad',myWidget.onLoad);
+widget.addEvent("onRefresh",myWidget.onLoad);
+    
 });
