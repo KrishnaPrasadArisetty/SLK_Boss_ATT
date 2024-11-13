@@ -1,8 +1,6 @@
 require(["DS/DataDragAndDrop/DataDragAndDrop","DS/PlatformAPI/PlatformAPI","DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices"], 
-function(DataDragAndDrop,PlatformAPI,WAFData,BaseUrl){
-	
-	
-	
+function(DataDragAndDrop,PlatformAPI,WAFData,BaseUrl){	
+
 var comWidget={
     widgetDataSelected: {},
 
@@ -20,11 +18,13 @@ var comWidget={
 		var theStatus = widget.body.querySelector('myStatusDrop');
 		DataDragAndDrop.dropppable(theInput,{
 			drop : function(data){
+				console.log("data", data);
 				theInput.value = data;
 				theStatus.value = 'drop';
 			},
 			enter : function(){
 				theStatus.value = 'enter';
+				console.log("Enter");
 			},
 			over : function(){
 				theStatus.value = 'over';
