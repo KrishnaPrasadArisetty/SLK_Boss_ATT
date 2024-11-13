@@ -1,8 +1,3 @@
-// require.config({
-//     paths: {
-//         vue: "./EmersonTest/Dependencies/vue/vue"
-//     }
-// });
 define("EmersonTest/scripts/Main", [
     "DS/PlatformAPI/PlatformAPI",
     "DS/WAFData/WAFData",
@@ -39,9 +34,7 @@ define("EmersonTest/scripts/Main", [
                     </div>
                 </div>`;
 
-        widget.body.innerHTML = temp;
-
-
+                widget.body.innerHTML = temp;
             },        
         }
         widget.myWidget = myWidget;

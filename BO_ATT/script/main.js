@@ -1,4 +1,5 @@
-require(["DS/DataDragAndDrop/DataDragAndDrop","DS/PlatformAPI/PlatformAPI","DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices"], function(DataDragAndDrop,PlatformAPI,WAFData,BaseUrl){
+require(["DS/DataDragAndDrop/DataDragAndDrop","DS/PlatformAPI/PlatformAPI","DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices"], 
+function(DataDragAndDrop,PlatformAPI,WAFData,BaseUrl){
 	
 	
 	
@@ -22,13 +23,13 @@ var comWidget={
 				theInput.value = data;
 				theStatus.value = 'drop';
 			},
-			enter : function(data){
+			enter : function(){
 				theStatus.value = 'enter';
 			},
-			over : function(data){
+			over : function(){
 				theStatus.value = 'over';
 			},
-			leave : function(data){
+			leave : function(){
 				theStatus.value = 'leave';
 			}
 		});
