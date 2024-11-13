@@ -6,7 +6,7 @@ var comWidget={
 
 	onLoad: function() { 
 		var html = "<table><tr>"+
-		"<td><lable class='myLbltype'>Drop in Editor</lable></td>"+
+		"<td><lable class='myLbltype'>Drop in mmmmEditor</lable></td>"+
 		"<td><input class='myInputType' type='text' size='60' /></td>"+
 		"<tr></tr>"+
 		"<td><lable class='myLbltype'>Drop status</lable></td>"+
