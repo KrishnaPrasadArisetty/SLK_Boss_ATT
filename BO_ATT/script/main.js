@@ -16,7 +16,7 @@ var comWidget={
 		widget.body.innerHTML=html;
 		var theInput = widget.body.querySelector('myInputType');
 		var theStatus = widget.body.querySelector('myStatusDrop');
-		DataDragAndDrop.dropppable(theInput,{
+		DataDragAndDrop.droppable(theInput,{
 			drop : function(data){
 				console.log("data", data);
 				theInput.value = data;
