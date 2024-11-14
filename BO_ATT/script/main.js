@@ -15,8 +15,8 @@ var comWidget={
 		var theInput = widget.body.querySelector('.mydropclass');
 		DataDragAndDrop.droppable(theInput,{
 			drop : function(data){
-				console.log("data", data);
-				theInput.value = data;
+				cconsole.log("data------", data);
+				dropbox.textContent = data;
 			},
 		});
 	},
