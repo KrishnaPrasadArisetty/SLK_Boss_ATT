@@ -2,7 +2,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop","DS/PlatformAPI/PlatformAPI","DS/W
 function(DataDragAndDrop,PlatformAPI,WAFData,BaseUrl){	
 
 
-var table;
+var Spectable;
+var parttable;
 var thead;
 var tbody;
 var headerRow;
@@ -13,13 +14,15 @@ var comWidget={
 
 
 	onLoad: function() { 
-		table = widget.createElement('table', {'id' : 'spectable'});
+		Spectable = widget.createElement('table', {'id' : 'spectable'});
+		parttable = widget.createElement('table', {'id' : 'parttable'});
 		thead = widget.createElement('thead', {'id' : 'tablehead'});
 		tbody = widget.createElement('tbody', {'id' : 'tablebody'});
 		mainDiv = widget.createElement('div', {'id' : 'mainDiv'});
-		table.appendChild(thead);
-		table.appendChild(tbody);
-		mainDiv.appendChild(table);
+		Spectable.appendChild(thead);
+		Spectable.appendChild(tbody);
+		mainDiv.appendChild(parttable);
+		mainDiv.appendChild(Spectable);
 		var dropbox = widget.createElement('div',{'class':'mydropclass',text :''});
 		var dropimage = widget.createElement('img', {'src': '../Images/dropImage.png', 'alt': 'Dropbox Image'});
 		dropbox.append(dropimage);
@@ -42,7 +45,7 @@ var comWidget={
 					comWidget.partDropped(PartId);
 					//dropbox.textContent = PartId;
 					thead.appendChild(headerRow);
-					widget.body.appendChild(table);
+					widget.body.appendChild(Spectable);
 			},
 		});
 	},
@@ -55,13 +58,24 @@ var comWidget={
 	specTable: function(sPartId) { 
 		console.log("Partid--SpecTable->", sPartId);
 		headerRow = document.createElement("tr");
-		const headers = ['Specification Name', 'Title', 'Att1', 'Att2'];
+		const headers = ['Specification Name', 'Title', 'Att1', 'Att2','Att3'];
 		headers.forEach(text => {
 			const headerCol = document.createElement("th");
 			headerCol.innerText = text;
 			headerRow.appendChild(headerCol);
 		});
 
+	},
+	partTable: function(sPartId) { 
+		console.log("Partid--SpecTable->", sPartId);
+		var partheaderRow = document.createElement("tr",{'id':'partheaderRow'});
+		const headers = ['Part Name', 'Title'];
+		headers.forEach(text => {
+			const headerCol = document.createElement("th");
+			headerCol.innerText = text;
+			partheaderRow.appendChild(headerCol);
+		});
+		parttable.appendChild(partheaderRow);
 	},
 	
 };
