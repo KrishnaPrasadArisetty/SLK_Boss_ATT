@@ -38,6 +38,7 @@ var comWidget={
 					console.log("data-aaaaa--bbbb---", PartId);		
 					comWidget.partDropped(PartId);
 					//dropbox.textContent = PartId;
+					thead.appendChild(headerRow);
 					widget.body.appendChild(table);
 			},
 		});
