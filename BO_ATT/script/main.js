@@ -10,13 +10,11 @@ var comWidget={
 		"</tr></table>";
 		var dropbox = widget.createElement('div',{'class':'mydropclass',text :'drop objects here'});
 		widget.body.innerHTML=dropbox;
-		var theInput = widget.body.querySelector('.myInputType');
-		var theStatus = widget.body.querySelector('.myStatusDrop');
+		var theInput = widget.body.querySelector('.mydropclass');
 		DataDragAndDrop.droppable(theInput,{
 			drop : function(data){
 				console.log("data", data);
 				theInput.value = data;
-				theStatus.value = 'drop';
 			},
 		});
 	},
