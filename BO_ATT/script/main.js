@@ -20,14 +20,13 @@ var comWidget={
 					const objs 		= JSON.parse(data);
 					let objList 	= objs.data.items;
 					let objsLength	= objList.length;
-					let PartId = ""
+					let PartId;
 					if(objsLength>1){
 						alert("please drop only one Object");
 						return;
-					} else {
-						PartId = objList[0].objectId;
 					}
-					console.log("data-aaaaa-----", PartId);					
+					PartId = objList[0].objectId;
+					console.log("data-aaaaa--bbbb---", PartId);					
 					
 					dropbox.textContent = PartId;
 			},
