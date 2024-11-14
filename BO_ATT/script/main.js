@@ -1,84 +1,102 @@
-require(["DS/DataDragAndDrop/DataDragAndDrop","DS/PlatformAPI/PlatformAPI","DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices"], 
-function(DataDragAndDrop,PlatformAPI,WAFData,BaseUrl){	
-
-
-var Spectable;
-var parttable;
-var thead;
-var tbody;
-var headerRow;
-
-
-var comWidget={
-    widgetDataSelected: {},
-
-
-	onLoad: function() { 
-		Spectable = widget.createElement('table', {'id' : 'spectable'});
-		parttable = widget.createElement('table', {'id' : 'parttable'});
-		thead = widget.createElement('thead', {'id' : 'tablehead'});
-		tbody = widget.createElement('tbody', {'id' : 'tablebody'});
-		mainDiv = widget.createElement('div', {'id' : 'mainDiv'});
-		Spectable.appendChild(thead);
-		Spectable.appendChild(tbody);
-		mainDiv.appendChild(parttable);
-		mainDiv.appendChild(Spectable);
-		var dropbox = widget.createElement('div',{'class':'mydropclass',text :''});
-		var dropimage = widget.createElement('img', {'src': '../Images/dropImage.png', 'alt': 'Dropbox Image'});
-		dropbox.append(dropimage);
-		widget.body.innerHTML="";
-		dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
-		dropbox.inject(widget.body);
-		var theInput = widget.body.querySelector('.mydropclass');
-		DataDragAndDrop.droppable(theInput,{
-			drop : function(data){
-					const objs 		= JSON.parse(data);
-					let objList 	= objs.data.items;
-					let objsLength	= objList.length;
-					let PartId;
-					if(objsLength>1){
-						alert("please drop only one Part");
-						return;
-					}
-					PartId = objList[0].objectId;
-					console.log("data-aaaaa--bbbb---", PartId);		
-					comWidget.partDropped(PartId);
-					//dropbox.textContent = PartId;
-					thead.appendChild(headerRow);
-					widget.body.appendChild(Spectable);
-			},
-		});
-	},
-
-	partDropped: function(sPartId) { 
-		console.log("Partid--partdropped->", sPartId);
-		comWidget.specTable(sPartId);	
-	},
-
-	specTable: function(sPartId) { 
-		console.log("Partid--SpecTable->", sPartId);
-		headerRow = document.createElement("tr");
-		const headers = ['Specification Name', 'Title', 'Att1', 'Att2','Att3'];
-		headers.forEach(text => {
-			const headerCol = document.createElement("th");
-			headerCol.innerText = text;
-			headerRow.appendChild(headerCol);
-		});
-
-	},
-	partTable: function(sPartId) { 
-		console.log("Partid--SpecTable->", sPartId);
-		var partheaderRow = document.createElement("tr",{'id':'partheaderRow'});
-		const headers = ['Part Name', 'Title'];
-		headers.forEach(text => {
-			const headerCol = document.createElement("th");
-			headerCol.innerText = text;
-			partheaderRow.appendChild(headerCol);
-		});
-		parttable.appendChild(partheaderRow);
-	},
+require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS/WAFData/WAFData", "DS/i3DXCompassServices/i3DXCompassServices"], 
+	function(DataDragAndDrop, PlatformAPI, WAFData, BaseUrl) {
 	
-};
-widget.addEvent('onLoad',comWidget.onLoad);
-widget.addEvent("onRefresh", comWidget.onLoad);
-});
+		var Spectable, parttable, thead, tbody, headerRow, partheaderRow;
+		var comWidget = {
+			widgetDataSelected: {},
+	
+			onLoad: function() { 
+				// Create table elements
+				Spectable = widget.createElement('table', { 'id' : 'spectable' });
+				parttable = widget.createElement('table', { 'id' : 'parttable' });
+				thead = widget.createElement('thead', { 'id' : 'tablehead' });
+				tbody = widget.createElement('tbody', { 'id' : 'tablebody' });
+				var mainDiv = widget.createElement('div', { 'id' : 'mainDiv' });
+				
+				// Append table sections
+				Spectable.appendChild(thead);
+				Spectable.appendChild(tbody);
+				mainDiv.appendChild(parttable);
+				mainDiv.appendChild(Spectable);
+				
+				// Create a dropbox for drag-and-drop functionality
+				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
+				var dropimage = widget.createElement('img', { 'src': '../Images/dropImage.png', 'alt': 'Dropbox Image' });
+				dropbox.append(dropimage);
+				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
+				dropbox.inject(widget.body);
+	
+				// Set up drag-and-drop functionality
+				var theInput = widget.body.querySelector('.mydropclass');
+				DataDragAndDrop.droppable(theInput, {
+					drop: function(data) {
+						const objs = JSON.parse(data);
+						let objList = objs.data.items;
+						let objsLength = objList.length;
+						if (objsLength > 1) {
+							alert("Please drop only one part.");
+							return;
+						}
+						const PartId = objList[0].objectId;
+						console.log("PartId dropped:", PartId);		
+						comWidget.partDropped(PartId);
+						// Append the header after the part is dropped
+						thead.appendChild(headerRow);
+						widget.body.appendChild(mainDiv);
+					},
+				});
+			},
+	
+			partDropped: function(sPartId) { 
+				console.log("PartId dropped:", sPartId);
+				comWidget.specTable(sPartId);  // Populate the spec table with data
+				comWidget.partTable(sPartId);  // Populate the part table with data
+			},
+	
+			specTable: function(sPartId) { 
+				console.log("Creating spec table for PartId:", sPartId);
+	
+				// Create header row for specification table if not already created
+				if (!headerRow) {
+					headerRow = document.createElement("tr");
+					const headers = ['Specification Name', 'Title', 'Att1', 'Att2', 'Att3'];
+					headers.forEach(text => {
+						const headerCol = document.createElement("th");
+						headerCol.innerText = text;
+						headerRow.appendChild(headerCol);
+					});
+				}
+	
+				// Here, populate the tbody with rows based on the partId
+				// You can add dynamic data for rows as needed
+				const row = document.createElement("tr");
+				['Spec 1', 'Title 1', 'Att1 Value', 'Att2 Value', 'Att3 Value'].forEach(value => {
+					const cell = document.createElement("td");
+					cell.innerText = value;
+					row.appendChild(cell);
+				});
+				tbody.appendChild(row);
+			},
+	
+			partTable: function(sPartId) { 
+				console.log("Creating part table for PartId:", sPartId);
+	
+				// Create header row for part table if not already created
+				if (!partheaderRow) {
+					partheaderRow = document.createElement("tr", { 'id': 'partheaderRow' });
+					const headers = ['Part Name', 'Title'];
+					headers.forEach(text => {
+						const headerCol = document.createElement("th");
+						headerCol.innerText = text;
+						partheaderRow.appendChild(headerCol);
+					});
+				}
+				
+				parttable.appendChild(partheaderRow);
+	
+			},
+		};
+	
+		widget.addEvent('onLoad', comWidget.onLoad);
+		widget.addEvent('onRefresh', comWidget.onLoad);
+	});
