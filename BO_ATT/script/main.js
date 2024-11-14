@@ -50,13 +50,14 @@ var comWidget={
 	},
 
 	specTable: function(sPartId) { 
-		console.log("Partid--spec->", sPartId);	
 		headerRow = document.createElement("tr");
-		headerCol1 = document.createElement("th",{'innerText': 'Specification Name'});
-		headerCol2 = document.createElement("th",{'innerText': 'Title'});
-		headerCol3 = document.createElement("th",{'innerText': 'Att1'});
-		headerCol4 = document.createElement("th",{'innerText': 'Att2'});
-		headerRow.append(headerCol1).append(headerCol2).append(headerCol3).append(headerCol4);
+		const headers = ['Specification Name', 'Title', 'Att1', 'Att2'];
+		headers.forEach(text => {
+			const headerCol = document.createElement("th");
+			headerCol.innerText = text;
+			headerRow.appendChild(headerCol);
+		});
+
 	},
 	
 };
