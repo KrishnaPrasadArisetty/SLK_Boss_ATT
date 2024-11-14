@@ -16,7 +16,10 @@ var comWidget={
 		table = widget.createElement('table', {'id' : 'spectable'});
 		thead = widget.createElement('thead', {'id' : 'tablehead'});
 		tbody = widget.createElement('tbody', {'id' : 'tablebody'});
-
+		mainDiv = widget.createElement('div', {'id' : 'mainDiv'});
+		table.appendChild(thead);
+		table.appendChild(tbody);
+		mainDiv.appendChild(table);
 		var dropbox = widget.createElement('div',{'class':'mydropclass',text :''});
 		var dropimage = widget.createElement('img', {'src': '../Images/dropImage.png', 'alt': 'Dropbox Image'});
 		dropbox.append(dropimage);
@@ -50,6 +53,7 @@ var comWidget={
 	},
 
 	specTable: function(sPartId) { 
+		console.log("Partid--SpecTable->", sPartId);
 		headerRow = document.createElement("tr");
 		const headers = ['Specification Name', 'Title', 'Att1', 'Att2'];
 		headers.forEach(text => {
