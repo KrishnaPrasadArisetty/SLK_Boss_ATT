@@ -9,6 +9,7 @@ var comWidget={
 		"<td><input class='myInputType' type='text' size='60' /></td>"+
 		"</tr></table>";
 		var dropbox = widget.createElement('div',{'class':'mydropclass',text :'drop objects here'});
+		var image = widget.createElement('img', {'src': '', 'alt': 'Dropbox Image'});
 		widget.body.innerHTML="";
 		dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
 		dropbox.inject(widget.body);
