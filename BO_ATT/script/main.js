@@ -1,13 +1,22 @@
 require(["DS/DataDragAndDrop/DataDragAndDrop","DS/PlatformAPI/PlatformAPI","DS/WAFData/WAFData","DS/i3DXCompassServices/i3DXCompassServices"], 
 function(DataDragAndDrop,PlatformAPI,WAFData,BaseUrl){	
 
+
+var table;
+var thead;
+var tbody;
+var headerRow;
+
+
 var comWidget={
     widgetDataSelected: {},
 
+
 	onLoad: function() { 
-		var html = "<table><tr>"+
-		"<td><input class='myInputType' type='text' size='60' /></td>"+
-		"</tr></table>";
+		table = widget.createElement('table', {'id' : 'spectable'});
+		thead = widget.createElement('thead', {'id' : 'tablehead'});
+		tbody = widget.createElement('tbody', {'id' : 'tablebody'});
+
 		var dropbox = widget.createElement('div',{'class':'mydropclass',text :''});
 		var dropimage = widget.createElement('img', {'src': '../Images/dropImage.png', 'alt': 'Dropbox Image'});
 		dropbox.append(dropimage);
@@ -22,15 +31,31 @@ var comWidget={
 					let objsLength	= objList.length;
 					let PartId;
 					if(objsLength>1){
-						alert("please drop only one Object");
+						alert("please drop only one Part");
 						return;
 					}
 					PartId = objList[0].objectId;
-					console.log("data-aaaaa--bbbb---", PartId);					
-					
-					dropbox.textContent = PartId;
+					console.log("data-aaaaa--bbbb---", PartId);		
+					comWidget.partDropped(PartId);
+					//dropbox.textContent = PartId;
+					widget.body.appendChild(table);
 			},
 		});
+	},
+
+	partDropped: function(sPartId) { 
+		console.log("Partid--partdropped->", sPartId);
+		comWidget.specTable(sPartId);	
+	},
+
+	specTable: function(sPartId) { 
+		console.log("Partid--spec->", sPartId);	
+		headerRow = document.createElement("tr");
+		headerCol1 = document.createElement("th",{'innerText': 'Specification Name'});
+		headerCol2 = document.createElement("th",{'innerText': 'Title'});
+		headerCol3 = document.createElement("th",{'innerText': 'Att1'});
+		headerCol4 = document.createElement("th",{'innerText': 'Att2'});
+		headerRow.append(headerCol1).append(headerCol2).append(headerCol3).append(headerCol4);
 	},
 	
 };
