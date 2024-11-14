@@ -20,16 +20,16 @@ var comWidget={
 					const objs 		= JSON.parse(data);
 					let objList 	= objs.data.items;
 					let objsLength	= objList.length;
-					let objCount;
+					let PartId = ""
 					if(objsLength>1){
 						alert("please drop only one Object");
 						return;
+					} else {
+						PartId = objList[0].objectId;
 					}
-					console.log("data-aaaaa-----", data);					
-					for (objCount = 0; objCount < objsLength; objCount++){
-						
-					}
-					dropbox.textContent = data;
+					console.log("data-aaaaa-----", PartId);					
+					
+					dropbox.textContent = PartId;
 			},
 		});
 	},
