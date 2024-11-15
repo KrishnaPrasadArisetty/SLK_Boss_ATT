@@ -56,9 +56,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					serviceName: '3DSpace', 
 					onComplete :  function (URLResult) {
 								urlBASE = URLResult+"/";
-								console.log(urlBASE);
+								urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
 								console.log("aaaaaaaaaaaaaaaaa-2222-----URL",URLResult);
-								console.log("aaaaaaaaaaaaaaaaa-2222-----platformId",platformId);
 								},
 					onFailure:  function( ) { alert("Something Went Wrong");
 					}
@@ -67,9 +66,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	
 			setCSRF: function() {
 				// Web Service call to get the crsf token (security) for the current session
-				let urlWAF = widget.getValue("urlBASE")+"resources/v1/application/CSRF";
+				let urlWAF = urlBASE+"resources/v1/application/CSRF";
 				let dataWAF = {};
-				let headerWAF = {};
+				let headerWAF = {};azz
 				let methodWAF = "GET";
 				let dataResp=WAFData.authenticatedRequest(urlWAF, {
 					method: methodWAF,
