@@ -174,7 +174,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				if (!partheaderRow) {
 					partheaderRow = document.createElement("tr", { 'id': 'partheaderRow' });
 					const headers = ['Part Name', 'Title'];
-					const partColumns = [partName,partTitle];
 					headers.forEach(text => {
 						const headerCol = document.createElement("th");
 						headerCol.innerText = text;
@@ -186,7 +185,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				if (!partDetailsRow) {
 					partDetailsRow = document.createElement("tr", { 'id': 'partDetailsRow' });
 					const partColumns = [partName,partTitle];
-					headers.forEach(text => {
+					partColumns.forEach(text => {
 						const Col = document.createElement("th");
 						Col.innerText = text;
 						partDetailsRow.appendChild(headerCol);
