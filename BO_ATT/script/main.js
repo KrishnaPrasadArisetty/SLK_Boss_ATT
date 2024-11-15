@@ -51,14 +51,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			},
 			setBaseURL: function() 
 			{
-				BaseUrl.getServiceUrl( { 
+				i3DXCompassServices.getServiceUrl( { 
 					platformId:  widget.getValue('x3dPlatformId'),
 					serviceName: '3DSpace', 
 					onComplete :  function (URLResult) {
-								urlBASE = URLResult+"/";
-								console.log(urlBASE);
-								console.log("aaaaaaaaaaaaaaaaa-2222-----URL",URLResult);
-								console.log("aaaaaaaaaaaaaaaaa-2222-----platformId",platformId);
+								//urlBASE = URLResult+"/";
+								urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
+								console.log("URLBASE_---------->"+urlBASE);
 								},
 					onFailure:  function( ) { alert("Something Went Wrong");
 					}
