@@ -52,14 +52,16 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			setBaseURL: function() 
 			{
 				BaseUrl.getServiceUrl( { 
-				serviceName: '3DSpace', 
-				platformId:  widget.getValue('x3dPlatformId'),
-				onComplete :  function (URLResult) {
-							urlBASE = URLResult+"/";
-							console.log("aaaaaaaaaaaaaaaaa------URL",urlBASE);
-							},
-				onFailure:  function( ) { alert("Something Went Wrong");
-				}
+					serviceName: '3DSpace', 
+					platformId:  widget.getValue('x3dPlatformId'),
+					onComplete :  function (URLResult) {
+								urlBASE = URLResult+"/";
+								console.log(urlBASE);
+								console.log("aaaaaaaaaaaaaaaaa-2222-----URL",URLResult);
+								console.log("aaaaaaaaaaaaaaaaa-2222-----platformId",platformId);
+								},
+					onFailure:  function( ) { alert("Something Went Wrong");
+					}
 				}) ; 
 			},
 	
