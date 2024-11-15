@@ -1,7 +1,8 @@
 require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS/WAFData/WAFData", "DS/i3DXCompassServices/i3DXCompassServices"], 
 	function(DataDragAndDrop, PlatformAPI, WAFData, BaseUrl) {
-	
+		
 		var Spectable, parttable, thead, tbody, headerRow, partheaderRow;
+		var urlBASE,csrfToken;
 		var comWidget = {
 			widgetDataSelected: {},
 	
@@ -25,7 +26,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				dropbox.append(dropimage);
 				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
 				dropbox.inject(widget.body);
-	
+				//
+				comWidget.setBaseURL();
+				comWidget.setCSRF();
 				// Set up drag-and-drop functionality
 				var theInput = widget.body.querySelector('.mydropclass');
 				DataDragAndDrop.droppable(theInput, {
@@ -44,6 +47,45 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						thead.appendChild(headerRow);
 						widget.body.appendChild(mainDiv);
 					},
+				});
+			},
+			setBaseURL: function() 
+			{
+				BaseUrl.getServiceUrl( { 
+				serviceName: '3DSpace', 
+				platformId:  widget.getValue('x3dPlatformId'),
+				onComplete :  function (URLResult) {
+							urlBASE = URLResult+"/";
+							console.log("aaaaaaaaaaaaaaaaa------URL",urlBASE);
+							},
+				onFailure:  function( ) { alert("Something Went Wrong");
+				}
+				}) ; 
+			},
+	
+			setCSRF: function() {
+				// Web Service call to get the crsf token (security) for the current session
+				let urlWAF = widget.getValue("urlBASE")+"resources/v1/application/CSRF";
+				let dataWAF = {};
+				let headerWAF = {};
+				let methodWAF = "GET";
+				let dataResp=WAFData.authenticatedRequest(urlWAF, {
+					method: methodWAF,
+					headers: headerWAF,
+					data: dataWAF,
+					type: "json",
+					async : false,
+					onComplete: function(dataResp) {
+						// Save the CSRF token to a hidden widget property so it can be recalled
+						let csrfArr=dataResp["csrf"];
+						//widget.setValue("csrfToken", csrfArr["value"]);
+						csrfToken = csrfArr["value"];
+							console.log("aaaaaaaaaaaaaaaaa------csrfToken",csrfToken);
+					},
+					onFailure: function(error) {
+						widget.body.innerHTML += "<p>Something Went Wrong- "+error+"</p>";
+						widget.body.innerHTML += "<p>" + JSON.stringify(error) + "</p>";
+					}
 				});
 			},
 	
