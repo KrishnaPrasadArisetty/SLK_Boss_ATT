@@ -184,15 +184,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					});
 				}
 				var partDetailsRow;
-				if (!partheaderRow) {
-					partheaderRow = document.createElement("tr", { 'id': 'partheaderRow' });
-					const headers = ['Part Name', 'Title'];
-					headers.forEach(text => {
-						const headerCol = document.createElement("th");
-						headerCol.innerText = text;
-						partheaderRow.appendChild(headerCol);
-					});
-				}
 				if (!partDetailsRow) {
 					partDetailsRow = document.createElement("tr", { 'id': 'partDetailsRow' });
 					const headers = [partName,partTitle];
