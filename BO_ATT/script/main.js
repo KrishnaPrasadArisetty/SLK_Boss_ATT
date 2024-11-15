@@ -25,6 +25,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var dropimage = widget.createElement('img', { 'src': '../Images/dropImage.png', 'alt': 'Dropbox Image' });
 				dropbox.append(dropimage);
 				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
+				widget.body.innerHTML="";
 				dropbox.inject(widget.body);
 				//
 				comWidget.setBaseURL();
@@ -58,7 +59,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					onComplete :  function (URLResult) {
 								urlBASE = URLResult+"/";
 								urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
-								console.log("aaaaaaaaaaaaaaaaa-2222-----URL",URLResult);
+								console.log("aaaaaaaaaaaaaaaaa-1111-----URL",URLResult);
 								},
 					onFailure:  function( ) { alert("Something Went Wrong");
 					}
@@ -66,6 +67,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			},
 	
 			setCSRF: function() {
+				console.log("aaaaaaaaaaaaaaaaa-2222-----URL",URLResult);
 				// Web Service call to get the crsf token (security) for the current session
 				let urlWAF = urlBASE+"resources/v1/application/CSRF";
 				let dataWAF = {};
@@ -77,6 +79,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					data: dataWAF,
 					type: "json",
 					async : false,
+					console.log("aaaaaaaaaaaaaaaaa-3333-----URL",URLResult);
 					onComplete: function(dataResp) {
 						// Save the CSRF token to a hidden widget property so it can be recalled
 						let csrfArr=dataResp["csrf"];
