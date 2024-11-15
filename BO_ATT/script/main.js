@@ -50,8 +50,10 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 							return;
 						}
 						const PartId = objList[0].objectId;
-						console.log("PartId dropped:", PartId);		
+						console.log("PartId dropped:", PartId);	
+						comWidget.getPartDetails(PartId);	
 						comWidget.partDropped(PartId);
+
 						// Append the header after the part is dropped
 						thead.appendChild(headerRow);
 						widget.body.innerHTML="";
@@ -99,7 +101,40 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					}
 				});
 			},
-	
+			getPartDetails: function(PartId) 
+			{
+				var headerWAF = {
+					ENO_CSRF_TOKEN: csrfToken,
+					SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
+					Accept: "application/json",
+					'Content-Type': 'application/json'
+				};
+				var methodWAF = "GET";
+				// Web Service for getting Test Case Object Detail
+				var urlObjWAF = urlBASE+"resources/v1/modeler/dseng/dseng:EngItem/";
+				urlObjWAF += PartId;
+				urlObjWAF += "?$mask=dsmveng:EngItemMask.Details";
+				var dataRespTC;
+				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
+					method: methodWAF,
+					headers: headerWAF,
+					data: {},
+					type: "json",
+					async : false,
+					onComplete: function(dataResp) {
+						dataRespTC=dataResp;
+						console.log("getPartDetailsreturn------- >> ",dataRespTC);
+								
+					},
+					onFailure: function(error, backendresponse, response_hdrs) {
+						alert(backendresponse.message);
+						console.log(backendresponse);
+						console.log(response_hdrs);
+						widget.body.innerHTML += "<p>Something Went Wrong"+error+"</p>";
+					}
+				})
+				return dataRespTC;
+			},
 			partDropped: function(sPartId) { 
 				console.log("PartId dropped:", sPartId);
 				comWidget.specTable(sPartId);  // Populate the spec table with data
