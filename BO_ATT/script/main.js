@@ -21,7 +21,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				mainDiv.appendChild(Spectable);
 				
 				// Create a dropbox for drag-and-drop functionality
-				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
+				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : 'Drop Parts Here' });
 				var dropimage = widget.createElement('img', { 'src': '../Images/dropImage.png', 'alt': 'Dropbox Image' });
 				dropbox.append(dropimage);
 				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
@@ -82,9 +82,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					onComplete: function(dataResp) {
 						// Save the CSRF token to a hidden widget property so it can be recalled
 						let csrfArr=dataResp["csrf"];
-						//widget.setValue("csrfToken", csrfArr["value"]);
 						csrfToken = csrfArr["value"];
-							console.log("aaaaaaaaaaaaaaaaa------csrfToken",csrfToken);
+						console.log("aaaaaaaaaaaaaaaaa------csrfToken",csrfToken);
 					},
 					onFailure: function(error) {
 						widget.body.innerHTML += "<p>Something Went Wrong- "+error+"</p>";
