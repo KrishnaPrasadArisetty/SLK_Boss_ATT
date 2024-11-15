@@ -53,9 +53,11 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						console.log("PartId dropped:", PartId);	
 						var dataResp3 = comWidget.getPartDetails(PartId);
 						console.log("dataResp3---->", dataResp3);	
-						//let partName = dataResp3.member[0].name;
-						//let partTitle = dataResp3.member[0].title;
-						comWidget.partDropped(PartId);
+						let partName = dataResp3.member[0].name;
+						let partTitle = dataResp3.member[0].title;
+						console.log("partName---->", partName);
+						console.log("partTitle---->", partTitle);
+						comWidget.partDropped(PartId,partName,partTitle);
 
 						// Append the header after the part is dropped
 						thead.appendChild(headerRow);
@@ -138,10 +140,10 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				})
 				return dataRespTC;
 			},
-			partDropped: function(sPartId) { 
+			partDropped: function(sPartId,partName,partTitle) { 
 				console.log("PartId dropped:", sPartId);
 				comWidget.specTable(sPartId);  // Populate the spec table with data
-				comWidget.partTable(sPartId);  // Populate the part table with data
+				comWidget.partTable(sPartId,partName,partTitle);  // Populate the part table with data
 			},
 	
 			specTable: function(sPartId) { 
@@ -169,7 +171,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				tbody.appendChild(row);
 			},
 	
-			partTable: function(sPartId) { 
+			partTable: function(sPartId,partName,partTitle) { 
 	
 				// Create header row for part table if not already created
 				if (!partheaderRow) {
@@ -181,8 +183,27 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						partheaderRow.appendChild(headerCol);
 					});
 				}
-				
+				var partDetailsRow;
+				if (!partheaderRow) {
+					partheaderRow = document.createElement("tr", { 'id': 'partheaderRow' });
+					const headers = ['Part Name', 'Title'];
+					headers.forEach(text => {
+						const headerCol = document.createElement("th");
+						headerCol.innerText = text;
+						partheaderRow.appendChild(headerCol);
+					});
+				}
+				if (!partDetailsRow) {
+					partDetailsRow = document.createElement("tr", { 'id': 'partDetailsRow' });
+					const headers = [partName,partTitle];
+					headers.forEach(text => {
+						const headerCol = document.createElement("th");
+						headerCol.innerText = text;
+						partDetailsRow.appendChild(headerCol);
+					});
+				}
 				parttable.appendChild(partheaderRow);
+				parttable.appendChild(partDetailsRow);
 	
 			},
 		};
