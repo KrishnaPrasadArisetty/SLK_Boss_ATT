@@ -171,9 +171,18 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				// Here, populate the tbody with rows based on the partId
 				// You can add dynamic data for rows as needed
 				const row = document.createElement("tr");
-				['Spec 1', 'Title 1', 'Att1 Value', 'Att2 Value', 'Att3 Value'].forEach(value => {
-					const cell = document.createElement("td");
-					cell.innerText = value;
+				const cell1 = document.createElement("td");
+				cell1.innerText = "Name";
+				const cell2 = document.createElement("td");
+				cell2.innerText = "title";
+				row.appendChild(cell1);
+				row.appendChild(cell2);
+				[ 'Att1 Value', 'Att2 Value', 'Att3 Value'].forEach(value => {
+					
+					const cell = widget.createElement("td");
+					const select = widget.createElement("select");
+					select.innerHTML = '<option>Y</option><option>N</option>';
+					cell.appendChild(select)
 					row.appendChild(cell);
 				});
 				tbody.appendChild(row);
