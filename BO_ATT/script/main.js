@@ -21,7 +21,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				mainDiv.appendChild(Spectable);
 				
 				// Create a dropbox for drag-and-drop functionality
-				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : 'Drop Parts Here' });
+				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
 				var dropimage = widget.createElement('img', { 'src': 'https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/dropImage.png', 'alt': 'Dropbox Image' });
 				dropbox.append(dropimage);
 				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
