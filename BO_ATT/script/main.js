@@ -24,10 +24,12 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
 				var dropimage = widget.createElement('img', { 'src': 'https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/dropImage.png', 'alt': 'Dropbox Image' });
 				dropbox.append(dropimage);
-				var dropboxsep = widget.createElement('div', { 'class' : 'dropboxsep', 'text' : '---OR---' });
+				var dropboxsep = widget.createElement('div', { 'class' : 'dropboxsep', 'text' : '-- or --' });
+				dropboxsep.style= "font-size: 12px; color: #d5e8f2 text-align: center";
 				dropbox.append(dropboxsep);
 				var button = document.createElement('button', {'class':'dynamic-button'});
-				button.style = "padding: 10px 20px; font-size: 16px; margin: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer";
+
+				button.style = "padding: 10px 20px; font-size: 14px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
 				button.innerHTML = 'Open content';
 				dropbox.append(button);
 				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
