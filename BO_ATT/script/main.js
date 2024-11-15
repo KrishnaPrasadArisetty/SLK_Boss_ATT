@@ -25,6 +25,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var dropimage = widget.createElement('img', { 'src': 'https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/dropImage.png', 'alt': 'Dropbox Image' });
 				dropbox.append(dropimage);
 				var button = document.createElement('button',{'innerHTML':'Search','class':'dynamic-button'});
+				//button.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
+				button.style = "padding: 10px 20px; font-size: 16px; margin: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer";
 				dropbox.append(button);
 				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
 				widget.body.innerHTML="";
