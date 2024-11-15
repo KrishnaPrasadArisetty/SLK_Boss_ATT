@@ -23,8 +23,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				mainDiv.appendChild(Spec);
 				mainDiv.appendChild(Spectable);
 				var clearbutton = document.createElement('button', {'class':'dynamic-button'});
-				clearbutton.style = "border-radius: 10px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
+				clearbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
 				clearbutton.innerHTML = 'clear';
+				clearbutton.addEventListener('click', comWidget.onLoad);
 				mainDiv.appendChild(clearbutton);
 				
 				// Create a dropbox for drag-and-drop functionality
@@ -169,10 +170,12 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	
 				// Here, populate the tbody with rows based on the partId
 				// You can add dynamic data for rows as needed
-				const row = document.createElement("tr");
-				['Spec 1', 'Title 1', 'Att1 Value', 'Att2 Value', 'Att3 Value'].forEach(value => {
-					const cell = document.createElement("td");
-					cell.innerText = value;
+				const row = widget.createElement("tr");
+				['Att1 Value', 'Att2 Value', 'Att3 Value'].forEach(value => {
+					const cell = widget.createElement("td");
+					const select = widget.createElement("select");
+					select.innerHTML = '<option>Yes</option><option>NO</option>';
+					cell.appendChild(select)
 					row.appendChild(cell);
 				});
 				tbody.appendChild(row);
