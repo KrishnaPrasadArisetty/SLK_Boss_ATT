@@ -50,9 +50,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					},
 				});
 			},
-			BaseUrl: function() 
+			setBaseURL: function() 
 			{
-				i3DXCompassServices.getServiceUrl( { 
+				BaseUrl.getServiceUrl( { 
 					platformId:  widget.getValue('x3dPlatformId'),
 					serviceName: '3DSpace', 
 					onComplete :  function (URLResult) {
