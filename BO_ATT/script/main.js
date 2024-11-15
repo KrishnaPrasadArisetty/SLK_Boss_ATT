@@ -79,7 +79,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					data: dataWAF,
 					type: "json",
 					async : false,
-					console.log("aaaaaaaaaaaaaaaaa-3333-----URL",URLResult);
 					onComplete: function(dataResp) {
 						// Save the CSRF token to a hidden widget property so it can be recalled
 						let csrfArr=dataResp["csrf"];
