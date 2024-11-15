@@ -18,7 +18,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				Spectable.appendChild(thead);
 				Spectable.appendChild(tbody);
 				mainDiv.appendChild(parttable);
+				var Spec = widget.createElement('div', { 'id' : 'Spec', 'text' : '' });
+				Spec.style = "padding-bottom: 10px;";
+				mainDiv.appendChild(Spec);
 				mainDiv.appendChild(Spectable);
+				var clearbutton = document.createElement('button', {'class':'dynamic-button'});
+				clearbutton.style = "border-radius: 10px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
+				clearbutton.innerHTML = 'clear';
+				mainDiv.appendChild(clearbutton);
 				
 				// Create a dropbox for drag-and-drop functionality
 				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
