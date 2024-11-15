@@ -28,7 +28,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				dropbox.append(dropboxsep);
 				var button = document.createElement('button', {'class':'dynamic-button'});
 				button.style = "padding: 10px 20px; font-size: 16px; margin: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer";
-				button.innerHTML = 'Search';
+				button.innerHTML = 'Open content';
 				dropbox.append(button);
 				dropbox.style = "border:2px #c6c5c5 dashed; margin:10px; padding: 5%; text-align: center";
 				widget.body.innerHTML="";
