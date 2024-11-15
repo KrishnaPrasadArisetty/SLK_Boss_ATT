@@ -136,7 +136,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					async : false,
 					onComplete: function(dataResp) {
 						dataRespTC=dataResp;
-						console.log("getPartDetailsreturn------- >> ",dataRespTC);
+						console.log("getPartDetailsreturn--sss----- >> ",dataRespTC);
 								
 					},
 					onFailure: function(error, backendresponse, response_hdrs) {
