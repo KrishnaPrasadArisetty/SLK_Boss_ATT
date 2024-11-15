@@ -45,6 +45,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						comWidget.partDropped(PartId);
 						// Append the header after the part is dropped
 						thead.appendChild(headerRow);
+						widget.body.innerHTML="";
 						widget.body.appendChild(mainDiv);
 					},
 				});
