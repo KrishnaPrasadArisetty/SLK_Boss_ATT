@@ -52,8 +52,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			setBaseURL: function() 
 			{
 				BaseUrl.getServiceUrl( { 
-					serviceName: '3DSpace', 
 					platformId:  widget.getValue('x3dPlatformId'),
+					serviceName: '3DSpace', 
 					onComplete :  function (URLResult) {
 								urlBASE = URLResult+"/";
 								console.log(urlBASE);
