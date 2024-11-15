@@ -49,7 +49,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					},
 				});
 			},
-			setBaseURL: function() 
+			BaseUrl: function() 
 			{
 				i3DXCompassServices.getServiceUrl( { 
 					platformId:  widget.getValue('x3dPlatformId'),
