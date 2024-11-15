@@ -68,7 +68,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				// Web Service call to get the crsf token (security) for the current session
 				let urlWAF = urlBASE+"resources/v1/application/CSRF";
 				let dataWAF = {};
-				let headerWAF = {};azz
+				let headerWAF = {};
 				let methodWAF = "GET";
 				let dataResp=WAFData.authenticatedRequest(urlWAF, {
 					method: methodWAF,
