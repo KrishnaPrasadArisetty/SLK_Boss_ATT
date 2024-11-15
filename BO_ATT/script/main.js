@@ -67,7 +67,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			},
 	
 			setCSRF: function() {
-				console.log("aaaaaaaaaaaaaaaaa-2222-----URL",URLResult);
+				console.log("aaaaaaaaaaaaaaaaa-2222-----URL");
 				// Web Service call to get the crsf token (security) for the current session
 				let urlWAF = urlBASE+"resources/v1/application/CSRF";
 				let dataWAF = {};
