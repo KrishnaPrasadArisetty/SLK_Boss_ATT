@@ -52,9 +52,10 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						const PartId = objList[0].objectId;
 						console.log("PartId dropped:", PartId);	
 						var dataResp3 = comWidget.getPartDetails(PartId);
-						let partName = dataResp3.member[0].name;
-						let partTitle = dataResp3.member[0].title;
-						comWidget.partDropped(PartId,partName,partTitle);
+						console.log("dataResp3---->", dataResp3);	
+						//let partName = dataResp3.member[0].name;
+						//let partTitle = dataResp3.member[0].title;
+						comWidget.partDropped(PartId);
 
 						// Append the header after the part is dropped
 						thead.appendChild(headerRow);
@@ -137,10 +138,10 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				})
 				return dataRespTC;
 			},
-			partDropped: function(sPartId,partName,partTitle) { 
+			partDropped: function(sPartId) { 
 				console.log("PartId dropped:", sPartId);
 				comWidget.specTable(sPartId);  // Populate the spec table with data
-				comWidget.partTable(partName,partTitle);  // Populate the part table with data
+				comWidget.partTable(sPartId);  // Populate the part table with data
 			},
 	
 			specTable: function(sPartId) { 
@@ -168,7 +169,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				tbody.appendChild(row);
 			},
 	
-			partTable: function(partName,partTitle) { 
+			partTable: function(sPartId) { 
 	
 				// Create header row for part table if not already created
 				if (!partheaderRow) {
@@ -180,19 +181,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						partheaderRow.appendChild(headerCol);
 					});
 				}
-				// Create partDetails row for part table if not already created
-				var partDetailsRow
-				if (!partDetailsRow) {
-					partDetailsRow = document.createElement("tr", { 'id': 'partDetailsRow' });
-					const partColumns = [partName,partTitle];
-					partColumns.forEach(text => {
-						const Col = document.createElement("th");
-						Col.innerText = text;
-						partDetailsRow.appendChild(headerCol);
-					});
-				}
+				
 				parttable.appendChild(partheaderRow);
-				parttable.appendChild(partDetailsRow);
 	
 			},
 		};
