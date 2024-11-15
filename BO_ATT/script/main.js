@@ -184,7 +184,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				// Create header row for part table if not already created
 				if (!partheaderRow) {
 					partheaderRow = document.createElement("tr", { 'id': 'partheaderRow' });
-					const headers = ['Part Name', 'Title'];
+					const headers = ['Part Names', 'Title'];
 					headers.forEach(text => {
 						const headerCol = document.createElement("th");
 						headerCol.innerText = text;
