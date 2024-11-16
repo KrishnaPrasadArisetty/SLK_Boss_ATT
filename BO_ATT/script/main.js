@@ -30,7 +30,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				var exportbutton = document.createElement('button', {'class':'dynamic-button'});
 				exportbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
-				exportbutton.innerHTML = 'export';
+				exportbutton.innerHTML = '<img src= "https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/exportImage.JPG" alt="Export Icon" /> export';
 				//exportbutton.addEventListener('click', comWidget.exportTable('Part_Spec_BossAtt.csv'));
 				exportbutton.addEventListener('click', () => comWidget.exportTable('Part_Spec_BossAtt.csv'));
 				mainDiv.appendChild(exportbutton);
