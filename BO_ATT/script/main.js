@@ -31,7 +31,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var exportbutton = document.createElement('button', {'class':'dynamic-button'});
 				exportbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
 				exportbutton.innerHTML = 'export';
-				exportbutton.addEventListener('click', comWidget.exportTable('Part_Spec_BossAtt.csv'));
+				//exportbutton.addEventListener('click', comWidget.exportTable('Part_Spec_BossAtt.csv'));
+				exportbutton.addEventListener('click', () => exportTable('Part_Spec_BossAtt.csv'));
 				mainDiv.appendChild(exportbutton);
 				
 				// Create a dropbox for drag-and-drop functionality
@@ -84,11 +85,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 			exportTable: function(filename){
 				
-				//var eParttable = widget.getElementById('parttable');
-				//var espectable = widget.getElementById('spectable');
-
-				let csvContent = "";
+				let csvContent = "TESTTTTTTTT";
 				const rows = parttable.rows;
+				/*
 				for (let i =0; i<rows.lenght; i++) {
 					const row = rows[i];
 					const rowData = [];
@@ -97,13 +96,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					}
 					csvContent += rowData.join() + '/n';
 				}
+					*/
 				//Create Download link
 				let hiddenElement = widget.createElement('hid');
 				hiddenElement.href = 'data:text/csv/charset=utf-8,' + encodeURI(csvContent);
 				hiddenElement.target = '_blank';
 				hiddenElement.download = filename;
 				hiddenElement.click();
-				
 			},
 			
 			setBaseURL: function() 
