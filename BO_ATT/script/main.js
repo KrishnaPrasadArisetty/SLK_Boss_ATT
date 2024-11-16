@@ -14,6 +14,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				tbody = widget.createElement('tbody', { 'id' : 'tablebody' });
 				var mainDiv = widget.createElement('div', { 'id' : 'mainDiv' });
 				
+				var exportbutton = document.createElement('button', {'class':'dynamic-button'});
+				exportbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
+				exportbutton.innerHTML = '<img src= "https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/exportImage.JPG" alt="Export Icon" /> export';
+				//exportbutton.addEventListener('click', comWidget.exportTable('Part_Spec_BossAtt.csv'));
+				exportbutton.addEventListener('click', () => comWidget.exportTable('Part_Spec_BossAtt.csv'));
+				mainDiv.appendChild(exportbutton);
+				
 				// Append table sections
 				Spectable.appendChild(thead);
 				Spectable.appendChild(tbody);
@@ -28,12 +35,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				clearbutton.addEventListener('click', comWidget.onLoad);
 				mainDiv.appendChild(clearbutton);
 
-				var exportbutton = document.createElement('button', {'class':'dynamic-button'});
-				exportbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
-				exportbutton.innerHTML = '<img src= "https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/exportImage.JPG" alt="Export Icon" /> export';
-				//exportbutton.addEventListener('click', comWidget.exportTable('Part_Spec_BossAtt.csv'));
-				exportbutton.addEventListener('click', () => comWidget.exportTable('Part_Spec_BossAtt.csv'));
-				mainDiv.appendChild(exportbutton);
+				
 				
 				// Create a dropbox for drag-and-drop functionality
 				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
