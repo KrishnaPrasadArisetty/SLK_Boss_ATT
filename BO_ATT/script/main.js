@@ -32,7 +32,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				exportbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
 				exportbutton.innerHTML = 'export';
 				//exportbutton.addEventListener('click', comWidget.exportTable('Part_Spec_BossAtt.csv'));
-				exportbutton.addEventListener('click', () => exportTable('Part_Spec_BossAtt.csv'));
+				exportbutton.addEventListener('click', () => comWidget.exportTable('Part_Spec_BossAtt.csv'));
 				mainDiv.appendChild(exportbutton);
 				
 				// Create a dropbox for drag-and-drop functionality
@@ -98,7 +98,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				}
 					*/
 				//Create Download link
-				let hiddenElement = widget.createElement('hid');
+				let hiddenElement = widget.createElement('a');
 				hiddenElement.href = 'data:text/csv/charset=utf-8,' + encodeURI(csvContent);
 				hiddenElement.target = '_blank';
 				hiddenElement.download = filename;
