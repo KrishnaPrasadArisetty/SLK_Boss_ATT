@@ -15,12 +15,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var mainDiv = widget.createElement('div', { 'id' : 'mainDiv' });
 				
 				var exportbutton = document.createElement('button', {'class':'dynamic-button'});
-				exportbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
-				exportbutton.innerHTML = '<img src= "https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/exportImage.JPG" alt="Export Icon" /> export';
+				exportbutton.style = " justify-content: center,display: flex, border-radius: 4px; padding: 1px 10px; font-size: 12px; align-items : center; margin: 10px; background-color: #f1f1f1; color: black; border: none; cursor: pointer";
+				exportbutton.innerHTML = '<img src= "https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/exportImage.JPG" alt="Export Icon" /> Export';
+				var img = exportbutton.querySelector('img');
+				img.style = "height : 20px ";
 				//exportbutton.addEventListener('click', comWidget.exportTable('Part_Spec_BossAtt.csv'));
 				exportbutton.addEventListener('click', () => comWidget.exportTable('Part_Spec_BossAtt.csv'));
 				mainDiv.appendChild(exportbutton);
-				
+
 				// Append table sections
 				Spectable.appendChild(thead);
 				Spectable.appendChild(tbody);
