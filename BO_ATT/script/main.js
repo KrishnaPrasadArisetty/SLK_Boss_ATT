@@ -27,6 +27,12 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				clearbutton.innerHTML = 'clear';
 				clearbutton.addEventListener('click', comWidget.onLoad);
 				mainDiv.appendChild(clearbutton);
+
+				var exportbutton = document.createElement('button', {'class':'dynamic-button'});
+				exportbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
+				exportbutton.innerHTML = 'export';
+				exportbutton.addEventListener('click', comWidget.exportTable('Part_Spec_BossAtt.csv'));
+				mainDiv.appendChild(exportbutton);
 				
 				// Create a dropbox for drag-and-drop functionality
 				var dropbox = widget.createElement('div', { 'class' : 'mydropclass', 'text' : '' });
@@ -76,6 +82,28 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				});
 			},
 
+			exportTable: function(filename){
+				var eParttable = widget.getElementById('parttable');
+				//var espectable = widget.getElementById('spectable');
+
+				let csvContent = "";
+				const rows = eParttable.rows;
+				for (let i =0; i<rows.lenght; i++) {
+					const row = rows[i];
+					const rowData = [];
+					for (let j =0; j<rows.lenght; j++){
+						rowData.push(row.cell[j].innerHTML);
+					}
+					csvContent += rowData.join() + '/n';
+				}
+				//Create Download link
+				let hiddenElement = widget.createElement('hid');
+				hiddenElement.href = 'data:text/csv/charset=utf-8,' + encodeURI(csvContent);
+				hiddenElement.target = '_blank';
+				hiddenElement.download = filename;
+				hiddenElement.click();
+			},
+			
 			setBaseURL: function() 
 			{
 				BaseUrl.getServiceUrl( { 
@@ -83,7 +111,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					serviceName: '3DSpace', 
 					onComplete :  function (URLResult) {
 						urlBASE = URLResult+"/";
-						urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
+						//urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
 						console.log("aaaaaaaaaaaaaaaaa-1111-----URL",URLResult);
 						comWidget.setCSRF();
 					},
@@ -121,7 +149,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			{
 				var headerWAF = {
 					ENO_CSRF_TOKEN: csrfToken,
-					SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
+					//SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
+					SecurityContext: "VPLMProjectLeader.Cross-Commodity.Requirements",
 					Accept: "application/json",
 					'Content-Type': 'application/json'
 				};
