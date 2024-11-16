@@ -61,13 +61,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						console.log("PartId dropped:", PartId);	
 						var dataResp3 = comWidget.getPartDetails(PartId);
 						console.log("dataResp3---->", dataResp3);
-						/*	
+						
 						let partName = dataResp3.member[0].name;
 						let partTitle = dataResp3.member[0].title;
 						console.log("partName---->", partName);
 						console.log("partTitle---->", partTitle);
 						comWidget.partDropped(PartId,partName,partTitle);
-						*/
+						
 						// Append the header after the part is dropped
 						thead.appendChild(headerRow);
 						widget.body.innerHTML="";
@@ -82,7 +82,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					serviceName: '3DSpace', 
 					onComplete :  function (URLResult) {
 								urlBASE = URLResult+"/";
-								//urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
+								urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
 								console.log("aaaaaaaaaaaaaaaaa-1111-----URL",URLResult);
 								},
 					onFailure:  function( ) { alert("Something Went Wrong");
