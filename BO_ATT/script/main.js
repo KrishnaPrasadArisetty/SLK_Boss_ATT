@@ -83,12 +83,12 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			},
 
 			exportTable: function(filename){
-				/*
-				var eParttable = widget.getElementById('parttable');
+				
+				//var eParttable = widget.getElementById('parttable');
 				//var espectable = widget.getElementById('spectable');
 
 				let csvContent = "";
-				const rows = eParttable.rows;
+				const rows = parttable.rows;
 				for (let i =0; i<rows.lenght; i++) {
 					const row = rows[i];
 					const rowData = [];
@@ -103,7 +103,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				hiddenElement.target = '_blank';
 				hiddenElement.download = filename;
 				hiddenElement.click();
-				*/
+				
 			},
 			
 			setBaseURL: function() 
