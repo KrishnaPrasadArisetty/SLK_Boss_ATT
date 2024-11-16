@@ -45,7 +45,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				dropbox.inject(widget.body);
 				//
 				comWidget.setBaseURL();
-				comWidget.setCSRF();
 
 				// Set up drag-and-drop functionality
 				var theInput = widget.body.querySelector('.mydropclass');
@@ -86,6 +85,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						urlBASE = URLResult+"/";
 						urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
 						console.log("aaaaaaaaaaaaaaaaa-1111-----URL",URLResult);
+						comWidget.setCSRF();
 					},
 					onFailure:  function( ) { alert("Something Went Wrong");
 					}
