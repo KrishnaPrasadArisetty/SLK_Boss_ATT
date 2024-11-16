@@ -46,6 +46,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				//
 				comWidget.setBaseURL();
 				comWidget.setCSRF();
+
 				// Set up drag-and-drop functionality
 				var theInput = widget.body.querySelector('.mydropclass');
 				DataDragAndDrop.droppable(theInput, {
@@ -75,16 +76,17 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					},
 				});
 			},
+
 			setBaseURL: function() 
 			{
 				BaseUrl.getServiceUrl( { 
 					platformId:  widget.getValue('x3dPlatformId'),
 					serviceName: '3DSpace', 
 					onComplete :  function (URLResult) {
-								urlBASE = URLResult+"/";
-								urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
-								console.log("aaaaaaaaaaaaaaaaa-1111-----URL",URLResult);
-								},
+						urlBASE = URLResult+"/";
+						urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
+						console.log("aaaaaaaaaaaaaaaaa-1111-----URL",URLResult);
+					},
 					onFailure:  function( ) { alert("Something Went Wrong");
 					}
 				}) ; 
@@ -216,7 +218,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	
 			},
 		};
-	
 		widget.addEvent('onLoad', comWidget.onLoad);
 		widget.addEvent('onRefresh', comWidget.onLoad);
 	});
