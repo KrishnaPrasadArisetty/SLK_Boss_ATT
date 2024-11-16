@@ -83,6 +83,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			},
 
 			exportTable: function(filename){
+				/*
 				var eParttable = widget.getElementById('parttable');
 				//var espectable = widget.getElementById('spectable');
 
@@ -102,6 +103,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				hiddenElement.target = '_blank';
 				hiddenElement.download = filename;
 				hiddenElement.click();
+				*/
 			},
 			
 			setBaseURL: function() 
