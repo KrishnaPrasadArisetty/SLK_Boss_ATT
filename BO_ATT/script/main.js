@@ -2,7 +2,15 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	function(DataDragAndDrop, PlatformAPI, WAFData, BaseUrl) {
 		
 		var Spectable, parttable, thead, tbody, headerRow, partheaderRow;
-		var urlBASE,csrfToken;
+		var urlBASE,csrfToken,securityContext;
+
+		//securityContext= "VPLMProjectLeader.Cross-Commodity.Requirements",
+		//SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
+
+		securityContext= "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
+		urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
+
+
 		var comWidget = {
 			widgetDataSelected: {},
 	
@@ -19,7 +27,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				exportbutton.innerHTML = '<img src= "https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/exportImage.JPG" alt="Export Icon" /> Export';
 				var img = exportbutton.querySelector('img');
 				img.style = "height : 20px ";
-				//exportbutton.addEventListener('click', comWidget.exportTable('Part_Spec_BossAtt.csv'));
 				exportbutton.addEventListener('click', () => comWidget.exportTable('Part_Spec_BossAtt.csv'));
 				mainDiv.appendChild(exportbutton);
 
@@ -155,7 +162,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var headerWAF = {
 					ENO_CSRF_TOKEN: csrfToken,
 					//SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
-					SecurityContext: "VPLMProjectLeader.Cross-Commodity.Requirements",
+					SecurityContext: securityContext,
 					Accept: "application/json",
 					'Content-Type': 'application/json'
 				};
