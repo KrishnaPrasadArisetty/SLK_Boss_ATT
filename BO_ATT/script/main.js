@@ -22,13 +22,16 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				tbody = widget.createElement('tbody', { 'id' : 'tablebody' });
 				var mainDiv = widget.createElement('div', { 'id' : 'mainDiv' });
 				
+				var ssubDiv = widget.createElement('div', { 'id' : 'ssubDiv'});
+				ssubDiv.style = "display: flex; justify-content: flex-end";
 				var exportbutton = document.createElement('button', {'class':'dynamic-button'});
-				exportbutton.style = " justify-content: center,display: flex, border-radius: 4px; padding: 1px 10px; font-size: 12px; align-items : center; margin: 10px; background-color: #f1f1f1; color: black; border: none; cursor: pointer";
+				exportbutton.style = "border-radius: 4px; padding: 1px 10px; font-size: 12px; margin: 10px; background-color: #f1f1f1; color: black; border: none; cursor: pointer";
 				exportbutton.innerHTML = '<img src= "https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/exportImage.JPG" alt="Export Icon" /> Export';
 				var img = exportbutton.querySelector('img');
 				img.style = "height : 20px ";
 				exportbutton.addEventListener('click', () => comWidget.exportTable('Part_Spec_BossAtt.csv'));
-				mainDiv.appendChild(exportbutton);
+				ssubDiv.appendChild(exportbutton);
+				mainDiv.appendChild(ssubDiv);
 
 				// Append table sections
 				Spectable.appendChild(thead);
