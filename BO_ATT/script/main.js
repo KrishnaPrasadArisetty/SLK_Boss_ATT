@@ -41,12 +41,22 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				Spec.style = "padding-bottom: 10px;";
 				mainDiv.appendChild(Spec);
 				mainDiv.appendChild(Spectable);
+
+				var sLastbDiv = widget.createElement('div', { 'id' : 'sLastbDiv'});
+				sLastbDiv.style = "display: flex; justify-content: flex-end";
+
 				var clearbutton = document.createElement('button', {'class':'dynamic-button'});
 				clearbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
 				clearbutton.innerHTML = 'clear';
 				clearbutton.addEventListener('click', comWidget.onLoad);
-				mainDiv.appendChild(clearbutton);
+				sLastbDiv.appendChild(clearbutton);
 
+				var savebutton = document.createElement('button', {'class':'dynamic-button'});
+				savebutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
+				savebutton.innerHTML = 'save';
+				sLastbDiv.appendChild(savebutton);
+
+				mainDiv.appendChild(sLastbDiv);
 				
 				
 				// Create a dropbox for drag-and-drop functionality
@@ -207,7 +217,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				// Create header row for specification table if not already created
 				if (!headerRow) {
 					headerRow = document.createElement("tr");
-					const headers = ['Specification Name', 'Title', 'Att1', 'Att2', 'Att3'];
+					const headers = ['Specification Name', 'FSG Print on RT Order Required','FSG Print on Purchase Order Required','FSG Work Order Document Required','FSG Print on Work Order Required'];
 					headers.forEach(text => {
 						const headerCol = document.createElement("th");
 						headerCol.innerText = text;
