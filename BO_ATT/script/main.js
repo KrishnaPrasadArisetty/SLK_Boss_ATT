@@ -230,11 +230,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				const row = document.createElement("tr");
 				const cell1 = document.createElement("td");
 				cell1.innerText = "Name";
-				const cell2 = document.createElement("td");
-				cell2.innerText = "title";
 				row.appendChild(cell1);
-				row.appendChild(cell2);
-				[ 'Att1 Value', 'Att2 Value', 'Att3 Value'].forEach(value => {
+				[ 'Att1 Value', 'Att2 Value', 'Att3 Value','Att4 Value'].forEach(value => {
 					
 					const cell = widget.createElement("td");
 					const select = widget.createElement("select");
