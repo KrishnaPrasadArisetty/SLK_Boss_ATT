@@ -218,17 +218,18 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			specTable: function(sPartId) { 
 				console.log("Creating spec table for PartId:", sPartId);
 
-				 // Create and append the checkbox column
-				 const checkboxHeader = document.createElement("th");
-				 const checkbox = document.createElement("input");
-				 checkbox.type = "checkbox";
-				 checkboxHeader.appendChild(checkbox);
-				 headerRow.appendChild(checkboxHeader);
-				//-----------
+				 
 				
 				// Create header row for specification table if not already created
 				if (!headerRow) {
 					headerRow = document.createElement("tr");
+					// Create and append the checkbox column
+					const checkboxHeader = document.createElement("th");
+					const checkbox = document.createElement("input");
+					checkbox.type = "checkbox";
+					checkboxHeader.appendChild(checkbox);
+					headerRow.appendChild(checkboxHeader);
+				   //-----------
 					const headers = ['Specification Name', 'FSG Print on RT Order Required','FSG Print on Purchase Order Required','FSG Work Order Document Required','FSG Print on Work Order Required'];
 					headers.forEach(text => {
 						const headerCol = document.createElement("th");
