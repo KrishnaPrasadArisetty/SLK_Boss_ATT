@@ -217,6 +217,15 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	
 			specTable: function(sPartId) { 
 				console.log("Creating spec table for PartId:", sPartId);
+
+				 // Create and append the checkbox column
+				 const checkboxHeader = document.createElement("th");
+				 const checkbox = document.createElement("input");
+				 checkbox.type = "checkbox";
+				 checkboxHeader.appendChild(checkbox);
+				 headerRow.appendChild(checkboxHeader);
+				//-----------
+				
 				// Create header row for specification table if not already created
 				if (!headerRow) {
 					headerRow = document.createElement("tr");
@@ -231,6 +240,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				// Here, populate the tbody with rows based on the partId
 				// You can add dynamic data for rows as needed
 				const row = document.createElement("tr");
+				// Create and append the checkbox column
+				const checkboxHeader2 = document.createElement("th");
+				const checkbox2 = document.createElement("input");
+				checkbox2.type = "checkbox";
+				checkboxHeader2.appendChild(checkbox2);
+				row.appendChild(checkboxHeader2);
+				//---------
+
 				const cell1 = document.createElement("td");
 				cell1.innerText = "Name";
 				row.appendChild(cell1);
@@ -246,6 +263,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				//---------------
 				const row2 = document.createElement("tr");
+				// Create and append the checkbox column
+				const checkboxHeader3 = document.createElement("th");
+				const checkbox3 = document.createElement("input");
+				checkbox3.type = "checkbox";
+				checkboxHeader3.appendChild(checkbox3);
+				row2.appendChild(checkboxHeader3);
+				//------
 				const cell2 = document.createElement("td");
 				cell2.innerText = "Name2";
 				row2.appendChild(cell2);
