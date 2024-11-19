@@ -31,6 +31,10 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				img.style = "height : 20px ";
 				exportbutton.addEventListener('click', () => comWidget.exportTable('Part_Spec_BossAtt.csv'));
 				ssubDiv.appendChild(exportbutton);
+				var MassUpdatebutton = document.createElement('button', {'class':'dynamic-button'});
+				MassUpdatebutton.style = "border-radius: 4px; padding: 1px 10px; font-size: 12px; margin: 10px; background-color: #f1f1f1; color: black; border: none; cursor: pointer";
+				MassUpdatebutton.innerHTML = "Mass Update";
+				ssubDiv.appendChild(MassUpdatebutton);
 				mainDiv.appendChild(ssubDiv);
 
 				// Append table sections
@@ -213,7 +217,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	
 			specTable: function(sPartId) { 
 				console.log("Creating spec table for PartId:", sPartId);
-	
 				// Create header row for specification table if not already created
 				if (!headerRow) {
 					headerRow = document.createElement("tr");
@@ -240,6 +243,23 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					row.appendChild(cell);
 				});
 				tbody.appendChild(row);
+
+				//---------------
+				const row2 = document.createElement("tr");
+				const cell2 = document.createElement("td");
+				cell2.innerText = "Name2";
+				row2.appendChild(cell2);
+		
+				[ 'Att1 Value', 'Att2 Value', 'Att3 Value','Att4 Value'].forEach(value => {
+					
+					const cell = widget.createElement("td");
+					const select = widget.createElement("select");
+					select.innerHTML = '<option>Y</option><option>N</option>';
+					cell.appendChild(select)
+					row2.appendChild(cell);
+				});
+				tbody.appendChild(row2);
+				//-------------
 			},
 	
 			partTable: function(sPartId,partName,partTitle) { 
