@@ -218,8 +218,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			specTable: function(sPartId) { 
 				console.log("Creating spec table for PartId:", sPartId);
 
-				 
-				
+
 				// Create header row for specification table if not already created
 				if (!headerRow) {
 					headerRow = document.createElement("tr");
