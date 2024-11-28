@@ -95,9 +95,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						const PartId = objList[0].objectId;
 						const ProductType = objList[0].objectType;
 						if ("VPMReference"!=ProductType) {
-							alert("Please drop only Product");
+							alert("Please drop only Productpppp");
 							return;
 						}
+						let urlObjWAF = urlBASE+"resources/v1/modeler/documents/parentId/";
+							urlObjWAF += PartId;
+							urlObjWAF += "?parentRelName=SpecificationDocument";
+
+						comWidget.callwebService("GET",urlObjWAF,"")
 						console.log("PartId dropped:", PartId);	
 						var dataResp3 = comWidget.getPartDetails(PartId);
 						console.log("dataResp3---->", dataResp3);
@@ -115,7 +120,32 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					},
 				});
 			},
-
+			callwebService: function(methodWAF,urlObjWAF,data) 
+			{
+				var headerWAF = {
+					SecurityContext: securityContext,
+					Accept: "application/json"
+				};
+				let kp;
+				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
+					method: methodWAF,
+					headers: headerWAF,
+					data: data,
+					type: "json",
+					async : false,
+					onComplete: function(dataResp) {
+						kp=dataResp;
+						console.log("kp--CallWebService--- >> ",kp);
+					},
+					onFailure: function(error, backendresponse, response_hdrs) {
+						console.log(backendresponse);
+						console.log(response_hdrs);
+						widget.body.innerHTML += "<p>Something Went Wrong"+error+"</p>";
+					}
+				})
+				//return dataRespTC;
+				alert("---isnide web---"+kp);
+			},
 			exportTable: function(filename){
 				
 				let csvContent = "TESTTTTTTTT";
