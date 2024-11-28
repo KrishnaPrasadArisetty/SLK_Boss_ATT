@@ -273,8 +273,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				let SpecDetails =comWidget.callwebService("GET",urlObjWAF,"")
 				for (let i = 0; i < SpecDetails.items; i++) { 
 					let sSpec = SpecDetails.data[i];
-					let sSpecTitle =  document.dataelements.title;
-					let sSpecRevision =  document.dataelements.revision;
+					let sSpecTitle =  sSpec.dataelements.title;
+					let sSpecRevision =  sSpec.dataelements.revision;
 					//let sSpecDesc =  document.dataelements.description;
 					//let sSpecState =  document.dataelements.state;
 					const row = document.createElement("tr");
