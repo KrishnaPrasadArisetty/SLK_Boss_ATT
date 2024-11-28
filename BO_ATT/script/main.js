@@ -102,9 +102,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 							urlObjWAF += PartId;
 							urlObjWAF += "?parentRelName=SpecificationDocument";
 
-						comWidget.callwebService("GET",urlObjWAF,"")
+						var dataResp3 =comWidget.callwebService("GET",urlObjWAF,"")
 						console.log("PartId dropped:", PartId);	
-						var dataResp3 = comWidget.getPartDetails(PartId);
+						//var dataResp3 = comWidget.getPartDetails(PartId);
 						console.log("dataResp3---->", dataResp3);
 						
 						let partName = dataResp3.member[0].name;
@@ -143,8 +143,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						widget.body.innerHTML += "<p>Something Went Wrong"+error+"</p>";
 					}
 				})
-				//return dataRespTC;
-				alert("---isnide web---"+kp);
+				
+				alert("---isnide web---");
+				return kp;
 			},
 			exportTable: function(filename){
 				
