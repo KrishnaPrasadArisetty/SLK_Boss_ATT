@@ -287,7 +287,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					const cell1 = document.createElement("td");
 					cell1.innerText = sSpecTitle;
 					row.appendChild(cell1);
-					const cell2 = document.createElement("td");z
+					const cell2 = document.createElement("td");
 					//========
 					cell2.innerText = sSpecRevision;
 					row.appendChild(cell2);
