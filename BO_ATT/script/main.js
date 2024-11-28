@@ -287,8 +287,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					const cell1 = document.createElement("td");
 					cell1.innerText = sSpecTitle;
 					row.appendChild(cell1);
-					const cell2 = document.createElement("td");
-					cell1.innerText = sSpecRevision;
+					const cell2 = document.createElement("td");z
+					//========
+					cell2.innerText = sSpecRevision;
 					row.appendChild(cell2);
 					[ 'Att1 Value', 'Att2 Value', 'Att3 Value','Att4 Value'].forEach(value => {
 						
