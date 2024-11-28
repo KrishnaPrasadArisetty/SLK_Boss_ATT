@@ -98,13 +98,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 							alert("Please drop only Productpppp");
 							return;
 						}
-						let urlObjWAF = urlBASE+"resources/v1/modeler/documents/parentId/";
-							urlObjWAF += PartId;
-							urlObjWAF += "?parentRelName=SpecificationDocument";
-
-						var dataResp3 =comWidget.callwebService("GET",urlObjWAF,"")
 						console.log("PartId dropped:", PartId);	
-						//var dataResp3 = comWidget.getPartDetails(PartId);
+						var dataResp3 = comWidget.getPartDetails(PartId);
 						console.log("dataResp3---->", dataResp3);
 						
 						let partName = dataResp3.member[0].name;
@@ -251,9 +246,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				comWidget.partTable(sPartId,partName,partTitle);  // Populate the part table with data
 			},
 	
-			specTable: function(sPartId) { 
+			specTable: function(sPartId) {
 				console.log("Creating spec table for PartId:", sPartId);
-
 
 				// Create header row for specification table if not already created
 				if (!headerRow) {
@@ -265,13 +259,50 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					checkboxHeader.appendChild(checkbox);
 					headerRow.appendChild(checkboxHeader);
 				   //-----------
-					const headers = ['Specification Name', 'FSG Print on RT Order Required','FSG Print on Purchase Order Required','FSG Work Order Document Required','FSG Print on Work Order Required'];
+					const headers = ['Specification Title','Specification Revision', 'FSG Print on RT Order Required','FSG Print on Purchase Order Required','FSG Work Order Document Required','FSG Print on Work Order Required'];
 					headers.forEach(text => {
 						const headerCol = document.createElement("th");
 						headerCol.innerText = text;
 						headerRow.appendChild(headerCol);
 					});
 				}
+
+				let urlObjWAF = urlBASE+"resources/v1/modeler/documents/parentId/";
+				urlObjWAF += sPartId;
+				urlObjWAF += "?parentRelName=SpecificationDocument";
+				let SpecDetails =comWidget.callwebService("GET",urlObjWAF,"")
+				for (let i = 0; i < SpecDetails.items; i++) { 
+					let sSpec = SpecDetails.data[i];
+					let sSpecTitle =  document.dataelements.title;
+					let sSpecRevision =  document.dataelements.revision;
+					//let sSpecDesc =  document.dataelements.description;
+					//let sSpecState =  document.dataelements.state;
+					const row = document.createElement("tr");
+					const checkboxHeader2 = document.createElement("th");
+					const checkbox2 = document.createElement("input");
+					checkbox2.type = "checkbox";
+					checkboxHeader2.appendChild(checkbox2);
+					row.appendChild(checkboxHeader2);
+
+					const cell1 = document.createElement("td");
+					cell1.innerText = sSpecTitle;
+					row.appendChild(cell1);
+					const cell2 = document.createElement("td");
+					cell1.innerText = sSpecRevision;
+					row.appendChild(cell2);
+					[ 'Att1 Value', 'Att2 Value', 'Att3 Value','Att4 Value'].forEach(value => {
+						
+						const cell = widget.createElement("td");
+						const select = widget.createElement("select");
+						select.innerHTML = '<option>Y</option><option>N</option>';
+						cell.appendChild(select)
+						row.appendChild(cell);
+					});
+					tbody.appendChild(row);
+				}
+
+
+				/*
 	
 				// Here, populate the tbody with rows based on the partId
 				// You can add dynamic data for rows as needed
@@ -319,6 +350,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					row2.appendChild(cell);
 				});
 				tbody.appendChild(row2);
+				*/
 				//-------------
 			},
 	
