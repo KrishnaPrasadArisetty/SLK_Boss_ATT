@@ -89,10 +89,16 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						let objList = objs.data.items;
 						let objsLength = objList.length;
 						if (objsLength > 1) {
-							alert("Please drop only one part.");
+							alert("Please drop only one Product.");
 							return;
 						}
 						const PartId = objList[0].objectId;
+						const ProductType = objList[0].objectType;
+						if (ProductType == "VPMReference") {
+							alert("Please drop only Product");
+							return;
+						}
+						
 						console.log("PartId dropped:", PartId);	
 						var dataResp3 = comWidget.getPartDetails(PartId);
 						console.log("dataResp3---->", dataResp3);
@@ -178,7 +184,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			{
 				var headerWAF = {
 					ENO_CSRF_TOKEN: csrfToken,
-					//SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
 					SecurityContext: securityContext,
 					Accept: "application/json",
 					'Content-Type': 'application/json'
@@ -217,8 +222,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	
 			specTable: function(sPartId) { 
 				console.log("Creating spec table for PartId:", sPartId);
-
-
 				// Create header row for specification table if not already created
 				if (!headerRow) {
 					headerRow = document.createElement("tr");
