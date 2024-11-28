@@ -4,6 +4,9 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 		var Spectable, parttable, thead, tbody, headerRow, partheaderRow;
 		var urlBASE,csrfToken,securityContext;
 
+		//securityContext= "VPLMProjectLeader.Cross-Commodity.Requirements",
+		//SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
+
 		securityContext= "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
 		urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
 
@@ -86,22 +89,12 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						let objList = objs.data.items;
 						let objsLength = objList.length;
 						if (objsLength > 1) {
-							alert("Please drop only one Product.");
+							alert("Please drop only one part.");
 							return;
 						}
 						const PartId = objList[0].objectId;
-						const ProductType = objList[0].objectType;
-						if (ProductType == "VPMReference") {
-							alert("Please drop only Product");
-							return;
-						}
-						
 						console.log("PartId dropped:", PartId);	
-						//var dataResp3 = comWidget.getPartDetails(PartId);
-						let urlObjWAF = urlBASE+"resources/v1/modeler/documents/parentId/";
-							urlObjWAF += PartId;
-							urlObjWAF += "?parentRelName=SpecificationDocument";
-						var dataResp3 = comWidget.callwebService("GET",urlObjWAF,"");
+						var dataResp3 = comWidget.getPartDetails(PartId);
 						console.log("dataResp3---->", dataResp3);
 						
 						let partName = dataResp3.member[0].name;
@@ -185,6 +178,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 			{
 				var headerWAF = {
 					ENO_CSRF_TOKEN: csrfToken,
+					//SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
 					SecurityContext: securityContext,
 					Accept: "application/json",
 					'Content-Type': 'application/json'
@@ -223,6 +217,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 	
 			specTable: function(sPartId) { 
 				console.log("Creating spec table for PartId:", sPartId);
+
+
 				// Create header row for specification table if not already created
 				if (!headerRow) {
 					headerRow = document.createElement("tr");
@@ -361,31 +357,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				*/
 			},
-			callwebService: function(methodWAF,urlObjWAF,data) 
-			{
-				var headerWAF = {
-					SecurityContext: securityContext,
-					Accept: "application/json"
-				};
-				var dataRespTC;
-				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
-					method: methodWAF,
-					headers: headerWAF,
-					data: data,
-					type: "json",
-					async : false,
-					onComplete: function(dataResp) {
-						dataRespTC=dataResp;
-						console.log("dataRespTC--CallWebService--- >> ",dataRespTC);
-					},
-					onFailure: function(error, backendresponse, response_hdrs) {
-						console.log(backendresponse);
-						console.log(response_hdrs);
-						widget.body.innerHTML += "<p>Something Went Wrong"+error+"</p>";
-					}
-				})
-				return dataRespTC;
-			}
 		};
 		widget.addEvent('onLoad', comWidget.onLoad);
 		widget.addEvent('onRefresh', comWidget.onLoad);
