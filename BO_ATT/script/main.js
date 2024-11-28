@@ -102,8 +102,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						let urlObjWAF = urlBASE+"resources/v1/modeler/documents/parentId/";
 							urlObjWAF += PartId;
 							urlObjWAF += "parentRelName=SpecificationDocument";
-						let data = {};
-						var dataResp3 = comWidget.callwebService(methodWAF,urlObjWAF,data);
+						var dataResp3 = comWidget.callwebService(methodWAF,urlObjWAF,"");
 						console.log("dataResp3---->", dataResp3);
 						
 						let partName = dataResp3.member[0].name;
