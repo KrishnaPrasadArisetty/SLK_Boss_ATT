@@ -4,9 +4,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 		var Spectable, parttable, thead, tbody, headerRow, partheaderRow;
 		var urlBASE,csrfToken,securityContext;
 
-		//securityContext= "VPLMProjectLeader.Cross-Commodity.Requirements",
-		//SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
-
 		securityContext= "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
 		urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
 
@@ -100,7 +97,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						}
 						
 						console.log("PartId dropped:", PartId);	
-						var dataResp3 = comWidget.getPartDetails(PartId);
+						//var dataResp3 = comWidget.getPartDetails(PartId);
+						var methodWAF = "GET";
+						let urlObjWAF = urlBASE+"resources/v1/modeler/documents/parentId/";
+							urlObjWAF += PartId;
+							urlObjWAF += "parentRelName=SpecificationDocument";
+						let data = {};
+						var dataResp3 = comWidget.callwebService(methodWAF,urlObjWAF,data);
 						console.log("dataResp3---->", dataResp3);
 						
 						let partName = dataResp3.member[0].name;
@@ -360,6 +363,31 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				*/
 			},
+			callwebService: function(methodWAF,urlObjWAF,data) 
+			{
+				var headerWAF = {
+					SecurityContext: securityContext,
+					Accept: "application/json"
+				};
+				var dataRespTC;
+				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
+					method: methodWAF,
+					headers: headerWAF,
+					data: data,
+					type: "json",
+					async : false,
+					onComplete: function(dataResp) {
+						dataRespTC=dataResp;
+						console.log("dataRespTC--CallWebService--- >> ",dataRespTC);
+					},
+					onFailure: function(error, backendresponse, response_hdrs) {
+						console.log(backendresponse);
+						console.log(response_hdrs);
+						widget.body.innerHTML += "<p>Something Went Wrong"+error+"</p>";
+					}
+				})
+				return dataRespTC;
+			}
 		};
 		widget.addEvent('onLoad', comWidget.onLoad);
 		widget.addEvent('onRefresh', comWidget.onLoad);
