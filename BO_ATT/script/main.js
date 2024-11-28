@@ -93,6 +93,11 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 							return;
 						}
 						const PartId = objList[0].objectId;
+						const ProductType = objList[0].objectType;
+						if ("VPMReference"!=ProductType) {
+							alert("Please drop only Product");
+							return;
+						}
 						console.log("PartId dropped:", PartId);	
 						var dataResp3 = comWidget.getPartDetails(PartId);
 						console.log("dataResp3---->", dataResp3);
