@@ -8,7 +8,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 		//SecurityContext: "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
 
 		securityContext= "ctx%3A%3AVPLMProjectLeader.BU-0000001.Rosemount%20Flow",
-		urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
+		//urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
+		urlBASE = "";
 
 
 		var comWidget = {
@@ -89,13 +90,13 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						let objList = objs.data.items;
 						let objsLength = objList.length;
 						if (objsLength > 1) {
-							alert("Please drop only one part.");
+							alert("Please drop only one Product.");
 							return;
 						}
 						const PartId = objList[0].objectId;
 						const ProductType = objList[0].objectType;
 						if ("VPMReference"!=ProductType) {
-							alert("Please drop only Productpppp");
+							alert("Please drop only Products");
 							return;
 						}
 						console.log("PartId dropped:", PartId);	
@@ -139,7 +140,6 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					}
 				})
 				
-				alert("---isnide web---");
 				return kp;
 			},
 			exportTable: function(filename){
@@ -172,7 +172,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					onComplete :  function (URLResult) {
 						urlBASE = URLResult+"/";
 						//urlBASE = "https://oi000186152-us1-space.3dexperience.3ds.com/enovia/";
-						console.log("aaaaaaaaaaaaaaaaa-1111-----URL",URLResult);
+						console.log("aaaaaaaaaaaaaaaaa-1111-----URL",urlBASE);
 						comWidget.setCSRF();
 					},
 					onFailure:  function( ) { alert("Something Went Wrong");
