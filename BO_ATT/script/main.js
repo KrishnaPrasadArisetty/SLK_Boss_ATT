@@ -24,7 +24,19 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var mainDiv = widget.createElement('div', { 'id' : 'mainDiv' });
 				
 				var ssubDiv = widget.createElement('div', { 'id' : 'ssubDiv'});
-				ssubDiv.style = "display: flex; justify-content: flex-end";
+				ssubDiv.style = "display: flex; justify-content: flex-start";
+
+				var clearbutton = document.createElement('button', {'class':'dynamic-button'});
+				clearbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
+				clearbutton.innerHTML = 'clear';
+				clearbutton.addEventListener('click', comWidget.onLoad);
+				ssubDiv.appendChild(clearbutton);
+
+				var savebutton = document.createElement('button', {'class':'dynamic-button'});
+				savebutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
+				savebutton.innerHTML = 'save';
+				ssubDiv.appendChild(savebutton);
+
 				var exportbutton = document.createElement('button', {'class':'dynamic-button'});
 				exportbutton.style = "border-radius: 4px; padding: 1px 10px; font-size: 12px; margin: 10px; background-color: #f1f1f1; color: black; border: none; cursor: pointer";
 				exportbutton.innerHTML = '<img src= "https://krishnaprasadarisetty.github.io/SLK_Boss_ATT/BO_ATT/Images/exportImage.JPG" alt="Export Icon" /> Export';
@@ -49,7 +61,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 
 				var sLastbDiv = widget.createElement('div', { 'id' : 'sLastbDiv'});
 				sLastbDiv.style = "display: flex; justify-content: flex-end";
-
+				/*
 				var clearbutton = document.createElement('button', {'class':'dynamic-button'});
 				clearbutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
 				clearbutton.innerHTML = 'clear';
@@ -60,7 +72,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				savebutton.style = "border-radius: 4px; padding: 5px 20px; font-size: 12px; text-align: center; margin: 10px; background-color: #368ec4; color: white; border: none; cursor: pointer";
 				savebutton.innerHTML = 'save';
 				sLastbDiv.appendChild(savebutton);
-
+				*/
 				mainDiv.appendChild(sLastbDiv);
 				
 				
