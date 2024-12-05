@@ -48,12 +48,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				MassUpdatebutton.style = "border-radius: 4px; padding: 1px 10px; font-size: 12px; margin: 10px; background-color: #f1f1f1; color: black; border: none; cursor: pointer";
 				MassUpdatebutton.innerHTML = "Mass Update";
 				ssubDiv.appendChild(MassUpdatebutton);
-				mainDiv.appendChild(ssubDiv);
+				//mainDiv.appendChild(ssubDiv);
 
 				// Append table sections
 				Spectable.appendChild(thead);
 				Spectable.appendChild(tbody);
 				mainDiv.appendChild(parttable);
+				mainDiv.appendChild(ssubDiv);
+
 				var Spec = widget.createElement('div', { 'id' : 'Spec', 'text' : '' });
 				Spec.style = "padding-bottom: 10px;";
 				mainDiv.appendChild(Spec);
