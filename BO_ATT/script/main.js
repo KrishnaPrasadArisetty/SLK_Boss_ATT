@@ -273,7 +273,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					checkboxHeader.appendChild(checkbox);
 					headerRow.appendChild(checkboxHeader);
 				   //-----------
-					const headers = ['Specification Title','Specification Revision', 'FSG Print on RT Order Required','FSG Print on Purchase Order Required','FSG Work Order Document Required','FSG Print on Work Order Required'];
+					const headers = ['Specification Title','Specification Revision', 'Print on RT Order Required','Print on Purchase Order Required','Work Order Document Required','Print on Work Order Required','SAP/JDE'];
 					headers.forEach(text => {
 						const headerCol = document.createElement("th");
 						headerCol.innerText = text;
@@ -307,7 +307,7 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 					//========
 					cell2.innerText = sSpecRevision;
 					row.appendChild(cell2);
-					[ 'Att1 Value', 'Att2 Value', 'Att3 Value','Att4 Value'].forEach(value => {
+					[ 'Att1 Value', 'Att2 Value', 'Att3 Value','Att4 Value','Att4 Value'].forEach(value => {
 						
 						const cell = widget.createElement("td");
 						const select = widget.createElement("select");
