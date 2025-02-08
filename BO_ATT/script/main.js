@@ -284,7 +284,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				let urlObjWAF = urlBASE+"resources/v1/modeler/documents/parentId/";
 				urlObjWAF += sPartId;
 				urlObjWAF += "?parentRelName=SpecificationDocument";
-				let SpecDetails =comWidget.callwebService("GET",urlObjWAF,"")
+				let SpecDetails =comWidget.callwebService("GET",urlObjWAF,"");
+				console.log("SpecDetails------>"+SpecDetails);
 				for (let i = 0; i < SpecDetails.items; i++) { 
 					let sSpec = SpecDetails.data[i];
 					let sSpecID = sSpec.id;
