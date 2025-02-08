@@ -109,7 +109,8 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 						}
 						const PartId = objList[0].objectId;
 						const ProductType = objList[0].objectType;
-						if ("VPMReference"!=ProductType) {
+
+						if (ProductType !== "VPMReference" && ProductType !== "Raw_Material") {
 							alert("Please drop only Products");
 							return;
 						}
