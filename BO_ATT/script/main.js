@@ -234,6 +234,14 @@ require(["DS/DataDragAndDrop/DataDragAndDrop", "DS/PlatformAPI/PlatformAPI", "DS
 				var urlObjWAF = urlBASE+"resources/v1/modeler/dseng/dseng:EngItem/";
 				urlObjWAF += PartId;
 				urlObjWAF += "?$mask=dsmveng:EngItemMask.Details";
+
+				if ( ProductType ==="Raw_Material" ) {
+					stype = "Raw_Material";
+					sRefPath = "/resources/v1/modeler/dsrm/dsrm:RawMaterial/";
+
+					urlObjWAF = urlBASE+"resources/v1/modeler/dsrm/dsrm:RawMaterial/";
+				urlObjWAF += PartId;
+				}
 				var dataRespTC;
 				let dataResp=WAFData.authenticatedRequest(urlObjWAF, {
 					method: methodWAF,
